@@ -23,6 +23,8 @@ public class DeveloperData implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List<Car> cars = new ArrayList<>();
+        List<Member> members = new ArrayList<>();
+
         cars.add(new Car("Toyota", "Corolla", 675, 15));
         cars.add(new Car("Ford", "Focus", 560, 30));
         cars.add(new Car("Chevrolet", "Cruze", 806, 25));
@@ -75,7 +77,6 @@ public class DeveloperData implements ApplicationRunner {
         cars.add(new Car("Toyota", "Corolla", 470, 20));
         carRepository.saveAll(cars);
 
-        List<Member> members = new ArrayList<>();
         members.add(new Member("farblossom", "123456", "abc@123.dk", "Jens",
                 "Jensen", "Hvidovrevej 5", "Hvidovre", "2500"));
         members.add(new Member("eggbasket", "password123", "email@email.dk", "Hans", "Hansen",
