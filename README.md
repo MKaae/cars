@@ -4,20 +4,13 @@ This is the cars project big readme file with added navigation for future weeks.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Week](#week)
+- [Week1](#week1)
+- [Week2](#week2)
+- [Week3](#week3)
 
 ## Introduction
 
 This is a compiled readme file for easier navigation the later we get in the weeks.
-
-## Weeks navigation section.
-
-Here, you can list the key features of your project.
-
-- Week 1: [Link to Week 1](#link-to-week-1)
-- Week 2: [Link to Week 2](#link-to-week-2)
-- Week 3: [Link to Week 3](#link-to-week-3)
 
 ### Week 1
 
@@ -60,10 +53,10 @@ How to write simple "integration" tests, using H2 as a mock-database instead of 
    
 How to add (dev) connection details for you local MySQL database
 
-### Feature 2
+### Week 2
 
 Describe Feature 2 here.
 
-### Feature 3
+### Week 3
 
 ---
