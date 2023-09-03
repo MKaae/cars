@@ -35,17 +35,3 @@ Når vi kigger i vores yml fil kan vi se hvornår maven bliver brugt. Den kører
 9. Understand and chose cloud service models (IaaS, PaaS, SaaS, DBaaS)for your projects -> Just explain what you have used for this handin 
 
 Jeg har brugt PaaS, platform as a service hvor mit projekt kører inde på Azure, og jeg har brugt DBaaS, mysql database hvor mit MYSQL kører.
-
-- How did you mock database access in your tests, using an in-memory database and/or mockito → Refer to your code
-Jeg brugte begge dele. MemberService test er brugt med H2test, se linje 19 @MemberServiceH2Test.
-CarService er test brugt med Mockito se linje 24 @CarServiceMockitoTest.
-
-- Explain the concept Build Server and the role Github Actions play here
-Github actions er vores build server med vores workflow. Vores CI/CD kører gennem vores github så når vi uploader noget kører den både building og deployment for os.
-
-- Explain maven, relevant parts in maven, and how maven is used in our CI setup. Explain where maven is used by your GitHub Actions Script(s)
-Når vi kigger i vores yml fil kan vi se hvornår maven bliver brugt. Den kører Build with Maven når jeg har uploadet tingene til github, da mit script starter på -master branch push.
-Det står på linje 24 i min yml fil.
-
--  Understand and chose cloud service models (IaaS, PaaS, SaaS, DBaaS)for your projects -> Just explain what you have used for this handin
-Jeg har brugt PaaS, platform as a service hvor mit projekt kører inde på Azure, og jeg har brugt DBaaS, mysql database hvor mit MYSQL kører.
