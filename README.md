@@ -5,7 +5,7 @@ This is the cars project big readme file with added navigation for future weeks.
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Weeks](#weeks)
+- [Week](#week)
 
 ## Introduction
 
