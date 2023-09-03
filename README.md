@@ -53,7 +53,7 @@ How to write simple "integration" tests, using H2 as a mock-database instead of 
    
 How to add (dev) connection details for you local MySQL database
 
-## Week 2
+### Week 2
 
 What are the benefits of using a RESTful API Det er meget hurtigere at kode da man skal skrive mindre. Samtidig sender det filer som JSON eller lignende som der er en standard og super fleksibelt. Der er også nemme at integrere da man bare kan skrive en full API dokumentation som alle kan bruge.
 
@@ -73,6 +73,6 @@ Explain maven, relevant parts in maven, and how maven is used in our CI setup. E
 
 Understand and chose cloud service models (IaaS, PaaS, SaaS, DBaaS)for your projects -> Just explain what you have used for this handin Jeg har brugt PaaS, platform as a service hvor mit projekt kører inde på Azure, og jeg har brugt DBaaS, mysql database hvor mit MYSQL kører.
 
-## Week 3
+### Week 3
 
 sssss
