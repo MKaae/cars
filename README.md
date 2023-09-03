@@ -4,9 +4,9 @@ This is the cars project big readme file with added navigation for future weeks.
 
 ## Table of Contents
 
-- [Week 1](#week1)
-- [Week 2](#week2)
-- [Week 3](#week3)
+- [Week 1](#week-1)
+- [Week 2](#week-2)
+- [Week 3](#week-3)
 
 ## Introduction
 
