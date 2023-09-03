@@ -53,10 +53,10 @@ How to write simple "integration" tests, using H2 as a mock-database instead of 
    
 How to add (dev) connection details for you local MySQL database
 
-### Week 2
+## Week 2
 
 Describe Feature 2 here.
 
-### Week 3
+## Week 3
 
 ---
