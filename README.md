@@ -20,10 +20,10 @@ Answers for teacher's questions.
 (Wasn't specified if your TA was foreign so i will do hand-in in english.)
 
 The idea with, and reasons for why to use, a ORM-mapper
-
+<span style="color:green">
    Increases the speed of development since you have to write less code, thus also decreaasing the cost of development. 
-   It makes it easier to interact with the database, but also risky so we have to check that the database values doesn't get wierd, since it has Hibernate has standard values.
-   
+   It makes it easier to interact with the database, but also risky so we have to check that the database values doesn't get wierd, since it has Hibernate     has standard values.
+</span>   
 The meaning of the terms JPA, Hibernate and Spring Data JPA and how they are connected
 
    JPA is a specification that facilitiates object-relational mapping, it's used to access, manage and persist data between Java object and relational database.
