@@ -1,3 +1,26 @@
+# Cars project
+
+This is the cars project big readme file with added navigation for future weeks.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Weeks](#weeks)
+
+## Introduction
+
+This is a compiled readme file for easier navigation the later we get in the weeks.
+
+## Weeks navigation section.
+
+Here, you can list the key features of your project.
+
+- Week 1: [Link to Week 1](#link-to-week-1)
+- Week 2: [Link to Week 2](#link-to-week-2)
+- Week 3: [Link to Week 3](#link-to-week-3)
+
+### Week 1
+
 Answers for teacher's questions.
 
 
@@ -36,4 +59,11 @@ How to write simple "integration" tests, using H2 as a mock-database instead of 
    We use the @DataJpaTest and autowire the repository we need to test. Then we use some beforeEach or beforeAll data to test on, you can autogenerate the testclass with most IDE's.
    
 How to add (dev) connection details for you local MySQL database
-   You use the application properties to write it in. If you want secret connection details you can hide them and use them in your configuration under enviormental variables.
+
+### Feature 2
+
+Describe Feature 2 here.
+
+### Feature 3
+
+---
