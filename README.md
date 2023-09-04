@@ -86,7 +86,7 @@ Answers for teacher's questions.
 
    Når vi kigger i vores yml fil kan vi se hvornår maven bliver brugt. Den kører Build with Maven når jeg har uploadet tingene til github, da mit script       starter på -master branch push. Det står på linje 24 i min yml fil.
 
-9. Understand and chose cloud service models (IaaS, PaaS, SaaS, DBaaS)for your projects -> Just explain what you have used for this handin 
+9. Understand and chose cloud service models (IaaS, PaaS, SaaS, DBaaS)for your projects -> Just explain what you have used for this handin.
 
    Jeg har brugt PaaS, platform as a service hvor mit projekt kører inde på Azure, og jeg har brugt DBaaS, mysql database hvor mit MYSQL kører.
 
