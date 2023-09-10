@@ -62,4 +62,18 @@ public class CarService {
         Car car = getCarById(id);
         carRepository.delete(car);
     }
+
+    public double findAveragePricePrDay() {
+        return carRepository.findAveragePricePerDay();
+    }
+
+    public List<CarResponse> findNotReservedCars() {
+       List<Car> cars = carRepository.findByReservationsIsNull();
+       return cars.stream().map((car -> new CarResponse(car, true))).toList();
+    }
+
+    public List<CarResponse> findCarByBrandAndModel(String brand, String model) {
+        List<Car> cars = carRepository.findCarByBrandAndModel(brand, model);
+        return cars.stream().map((car -> new CarResponse(car, true))).toList();
+    }
 }

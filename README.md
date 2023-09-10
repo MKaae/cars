@@ -55,11 +55,11 @@ Answers for teacher's questions.
 
 1. What are the benefits of using a RESTful API 
 
-   Det er meget hurtigere at kode da man skal skrive mindre. Samtidig sender det filer som JSON eller lignende som der er en standard og super fleksibelt.     Der er også nemme at integrere da man bare kan skrive en full API dokumentation som alle kan bruge.
+   Det er meget hurtigere at kode da man skal skrive mindre. Samtidig sender det filer som JSON eller lignende som der er en standard og super fleksibelt.     Der er også nemme at integrere da man bare kan skrive en full API dokumentation som alle kan bruge. Restful API giver også mulighed for at integrere mit system med flere platforme, fx både af mobil app og hjemmeside på samme tid. API'er kan bruges til at vi kan bygge ud fra resources fra det system der er sat op. Restapi er også stateless som betyder alle kald er uafhængige af hinanden og giver al af den data man har brug for.
 
 2. What is JSON, and why does JSON fit so well with REST? 
 
-   JSON er den måde vi modtager og sender data på. De passer perfekt fordi vi kan læse JSON som mennesker da det ikke står for meget i kodesprog. Samtidig     kan JSON filer læses af næste alle teknologier. De er også gode til at sende data med da de har ting som array indbygget. Da de også bliver brugt som en    standard er der en enorm mængde værktøjer til at håndtere JSON.
+   JSON er den måde vi modtager og sender data på. De passer perfekt fordi vi kan læse JSON som mennesker da det ikke står for meget i kodesprog. Samtidig     kan JSON filer læses af næste alle teknologier. De er også gode til at sende data med da de har ting som array indbygget. Da de også bliver brugt som en    standard er der en enorm mængde værktøjer til at håndtere JSON. JSON er også language independant som betyder vi ikke har brug for et specielt sprog for at læse JSON.
 
 3. How you have designed simple CRUD endpoints using spring boot and DTOs to separate api from data -> Focus on your use of DTO's 
 
@@ -92,4 +92,33 @@ Answers for teacher's questions.
 
 ### Week 3
 
-sssss
+1. Where and why you have used a @OneToMany annotation
+
+   I vores opgave den her uge skulle vi koble reservations sammen med car og member. Jeg brugte @OneToMany til at definere relationen en(1) til mange(*) fordi jeg skal bruge det i min relationelle database til at koble mine klasser sammen med en join tabel reservations. Det står skrevet inde i car linje 26 inde i Car.  
+
+2. Where and why you have used a @ManyToOne annotation
+
+   Fordi vi skulle koble tingene sammen den her uge i vores relationelle database har jeg så også lavet min reservation klasse hvor jeg har min @ManyToOne over dem som jeg skal have en mange(*) til en(1) relationship imellem som er mellem reservations og car/member. Linje 21 og 23 inde i reservations.
+
+3. The purpose of the CascadeType, Fetchtype and mappedBy attributes you can use with one-to-many
+
+   CascadeType bliver brugt når vi skal have ændringer der kaskader gennem vores kald. Det kan være .ALL som der kaskader alle de operationer vi bruger til de Entities vi har sat det på, .PERSIST som er til insert, .MERGE som er til update, .REMOVE som er til delete.
+   Fetchtype bliver brugt til at vi bestemmer om det skal være LAZY eller EAGER fetch der kommer fra vores kald. LAZY er hvad den er sat til som standard. Vi bruger det til for eksempel hvis vi ikke vil have alle vores ting der hører med til den entity kaldt. Så hvis vi har en by og kalder den by får vi ikke alle borgerne med. Når vi bruger EAGER får vi altid alle informationerne med.
+   mappedBy bliver brugt til at lave vores bidirectional mapping mellem vores entities i vores relationer. Vi bruger det i vores Reservation klasse. Når vi bruger den vælger vi et field som fortæller hvordan vi håndterer vores relation. Det field skal så være dem som vi bruger vi bruger som vores mappedBy data.
+
+4. How/Where you have(if done) added user defined queries to your repositories
+
+   Det har vi gjort for at kunne lave queries der måske er mere komplekse som indeholder flere entities eller vi skal filtrere information på en bestemt måde, eller bare optimisering. Fx. kunne vi godt hente alle cars ud af databasen og ind i vores DTO for derefter at hente alle "Ford" "Focus" ud af den, men vi kan også bare hente den data som vi egentlig søger fra databasen. Det kan også være vi vil bruge databasen til at udregne noget for os som AvgPricePrDay hvor vi kan lave et custom SQL kald til at hente det beløb vi skal bruge.
+
+5. A few words explaining what you had to do on your Azure Service in order to make your Spring Boot App connect to your Azure MySql/Database
+
+   For at connecte min MySQL database på Azure med min App på azure var vi nødt til at give den de enviormental variables som den havde brug for. Det gør vi under "Configuration" og "Advanced Edit" hvor vi kan smide dem ind som noget der ligner en JSON.
+
+6. What are the pros & cons of using the Single Table Strategy for inheritance
+
+   Et plus er det gør databasen mere simpel da man kan bruge 1 tabel til at smide alle sin subclasses ind i. Det gør man skal bruge færre queries til at hente objekter.
+   Et negativ kan være data duplikation så vi får unødig data gentaget, det kan også være sværere at skalere.
+
+7. How are passwords stored in the database with the changes suggested in part-6 of the excersize
+
+   De bliver kørt igennem BCryptPasswordEncoder som jeg brugte sidste semester til at encrypte mine passwords. Når du sætter det op kan du vælge en strength value og så tilføjer den et salting til dit password og hasher dit password. Det gør det bliver den sammensatte længde af det hele -> Bcrypversion+strength+salting+password som bliver lagt ned i databasen.

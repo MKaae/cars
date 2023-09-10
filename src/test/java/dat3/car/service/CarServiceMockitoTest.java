@@ -7,10 +7,7 @@ import dat3.car.repository.CarRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -30,16 +27,16 @@ class CarServiceMockitoTest {
     void setUp(){
         carService = new CarService(carRepository);
     }
-    private Car makeCar(int id, String brand, String model, double pricePerDay, int bestDiscount){
-        Car car = new Car(id, brand, model, pricePerDay, bestDiscount);
+    private Car makeCar(String brand, String model, double pricePerDay, int bestDiscount){
+        Car car = new Car(brand, model, pricePerDay, bestDiscount);
         car.setCreated(LocalDateTime.now());
         car.setEdited(LocalDateTime.now());
         return car;
     }
     @Test
     public void testGetCars(){
-        Car car1 = makeCar(1, "brand1", "model1", 100, 10);
-        Car car2 = makeCar(2, "brand2", "model2", 200, 20);
+        Car car1 = makeCar("brand1", "model1", 100, 10);
+        Car car2 = makeCar("brand2", "model2", 200, 20);
         when(carRepository.findAll()).thenReturn(List.of(car1, car2));
         List<CarResponse> responses = carService.getCars(true);
         assertEquals(2, responses.size());
@@ -48,23 +45,23 @@ class CarServiceMockitoTest {
     @Test
     public void testFindingById(){
         when(carRepository.findById(1)).thenReturn(Optional.of(makeCar
-                (1, "brand1", "model1", 100, 10)));
+                ("brand1", "model1", 100, 10)));
         CarResponse response = carService.findById(1);
-        assertEquals(1, response.getId());
+        assertEquals(0, response.getId());
     }
     @Test
     public void testAddCarSuccess(){
-        Car newCar = makeCar(3, "brand3", "model3", 300, 30);
+        Car newCar = makeCar("brand3", "model3", 300, 30);
         when(carRepository.save(any(Car.class))).thenReturn(newCar);
         CarRequest request = new CarRequest(newCar);
         CarResponse response = carService.addCar(request);
-        assertEquals(3, response.getId());
+        assertEquals(0, response.getId());
     }
     //Method created with help from ChatGPT.
     @Test
     public void testEditCarInfo(){
         CarRequest request = new CarRequest(1, "brand1", "model1", 100, 10);
-        Car expectedCar = makeCar(1, "brand2", "model2", 200, 20);
+        Car expectedCar = makeCar("brand2", "model2", 200, 20);
         expectedCar.setPricePrDay(100);
         expectedCar.setBrand("brand1");
         expectedCar.setModel("model1");
@@ -79,7 +76,7 @@ class CarServiceMockitoTest {
     }
     @Test
     public void testSetBestDiscountPriceCarFound(){
-        Car newCar = makeCar(3, "brand3", "model3", 300, 30);
+        Car newCar = makeCar("brand3", "model3", 300, 30);
         when(carRepository.findById(3)).thenReturn(Optional.of(newCar));
         int testBestDiscount = 10;
 

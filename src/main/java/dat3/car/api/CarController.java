@@ -21,9 +21,7 @@ public class CarController {
     List<CarResponse> getCars(){
         return carService.getCars(false);
     }
-    //Added id to CarRequest and constructor in Car and added this method.
-    //it seemed illogical not to be able to search your database with primary key as admin for information.
-    //Security - Admin
+
     @GetMapping(path = "/{id}")
     CarResponse getCarById(@PathVariable int id) throws Exception {
         return carService.findById(id);
@@ -47,5 +45,17 @@ public class CarController {
     @DeleteMapping("/id")
     void deleteCarById(@PathVariable int id){
         carService.deleteCarById(id);
+    }
+    @GetMapping("/average")
+    double findAveragePricePrDay(){
+        return carService.findAveragePricePrDay();
+    }
+    @GetMapping("/unreserved")
+    List<CarResponse> findNotReservedCars(){
+        return carService.findNotReservedCars();
+    }
+    @GetMapping("/{brand}/{model}")
+    List<CarResponse> findByBrandAndModel(@PathVariable String brand, @PathVariable String model){
+        return carService.findCarByBrandAndModel(brand, model);
     }
 }

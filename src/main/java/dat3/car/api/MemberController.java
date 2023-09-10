@@ -52,4 +52,9 @@ class MemberController {
     void deleteMemberByUsername(@PathVariable String username) {
         memberService.deleteMemberByUsername(username);
     }
+    //Security - Admin
+    @GetMapping("/reservations")
+    List<MemberResponse> getMembersWithReservations(){
+        return memberService.getAllMembersWithReservations();
+    }
 }

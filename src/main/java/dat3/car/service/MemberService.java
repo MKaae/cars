@@ -2,6 +2,7 @@ package dat3.car.service;
 
 import dat3.car.dto.MemberRequest;
 import dat3.car.dto.MemberResponse;
+import dat3.car.dto.ReservationResponse;
 import dat3.car.entity.Member;
 import dat3.car.repository.MemberRepository;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,12 +23,6 @@ public class MemberService {
 
     public List<MemberResponse> getMembers(boolean includeAll) {
         List<Member> members = memberRepository.findAll();
-        /*List<MemberResponse> response = new ArrayList<>();
-        for(Member member: members){
-            MemberResponse mr = new MemberResponse(member, includeAll);
-            response.add(mr);
-            }*/
-        //List<MemberResponse> response = members.stream().map((member)-> new MemberResponse(member, includeAll)).toList();
         return members.stream().map((member->new MemberResponse(member, includeAll))).toList();
     }
 
@@ -35,7 +31,7 @@ public class MemberService {
             throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"This user already exists");
         }
         Member newMember = MemberRequest.getMemberEntity(body);
-
+        List<ReservationResponse> reservations = new ArrayList<>();
         newMember = memberRepository.save(newMember);
         return new MemberResponse(newMember, true);
     }
@@ -59,6 +55,7 @@ public class MemberService {
     public MemberResponse findById(String username) {
         Member member = memberRepository.findById(username).
                 orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Member with this username does exist"));
+        List<ReservationResponse> reservations = new ArrayList<>();
         return new MemberResponse(member, true);
     }
     public void setRankingForUser(String username, int value) {
@@ -75,5 +72,10 @@ public class MemberService {
     private Member getMemberByUsername(String username){
         return memberRepository.findById(username).
                 orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Member with this username does not exist"));
+    }
+
+    public List<MemberResponse> getAllMembersWithReservations() {
+        List<Member> members = memberRepository.findMembersByReservationsIsNotNull();
+        return members.stream().map((member -> new MemberResponse(member, true))).toList();
     }
 }
