@@ -14,9 +14,9 @@ import java.util.List;
 public class ReservationController {
     ReservationService reservationService;
 
-    /*public ReservationController(ReservationService reservationService) {
+    public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
-    }*/
+    }
     //Security - User
     /*@PostMapping
     public ReservationResponse makeReservation(@RequestBody ReservationRequest body){
@@ -33,10 +33,8 @@ public class ReservationController {
         return res;
     }
     //("/{carId}/{date}")
-    @PreAuthorize("hasRole('USER')")
     @PostMapping("/v2") ///(@PathVariable int id, @PathVariable String date, Principal principal)
     public ReservationResponse makeReservation2(@RequestBody ReservationRequest body, Principal principal){
-        System.out.println(body.getUsername());
         body.setUsername("");
         body.setUsername(principal.getName());
         return reservationService.reserveCar(body);

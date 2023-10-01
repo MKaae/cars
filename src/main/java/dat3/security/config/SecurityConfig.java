@@ -78,6 +78,7 @@ public class SecurityConfig {
 
             //This is for demo purposes only, and should be removed for a real system
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/api/reservations")).hasAuthority("USER")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/api/reservations/v2")).hasAuthority("USER")
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/cars/admin")).hasAuthority("ADMIN")
             .anyRequest().authenticated());
 
