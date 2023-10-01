@@ -21,6 +21,10 @@ public class CarController {
     List<CarResponse> getCars(){
         return carService.getCars(false);
     }
+    @GetMapping("/admin")
+    List<CarResponse> getCarsAll(){
+        return carService.getCars(true);
+    }
 
     @GetMapping(path = "/{id}")
     CarResponse getCarById(@PathVariable int id) throws Exception {
